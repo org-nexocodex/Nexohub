@@ -1,0 +1,2 @@
+Número 1: 5.0 + Número 2: 6.0 = Suma total: 11.0
+Número 1: 78.0 + Número 2: 100.0 = Suma total: 178.0

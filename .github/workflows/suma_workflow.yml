@@ -27,7 +27,7 @@ jobs:
 
       # 3. Ejecutar el script de Python que genera y suma los números
       - name: Ejecutar script de Python
-        run: python script_suma.py
+        run: python src/script_suma.py
 
       # 4. Configurar la identidad de Git para el commit automático
       - name: Configurar Git
