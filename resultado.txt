@@ -1,2 +1,3 @@
 Número 1: 5.0 + Número 2: 6.0 = Suma total: 11.0
 Número 1: 78.0 + Número 2: 100.0 = Suma total: 178.0
+NÃºmero 1: 36 + NÃºmero 2: 39 = Suma total: 75
