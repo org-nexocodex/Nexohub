@@ -1,44 +1,44 @@
 name: Suma Automatica con Python
 
-# Se puede ejecutar manualmente desde GitHub y también automáticamente una vez al día (opcional)
 on:
-  workflow_dispatch: # Te permite darle a "Run workflow" manualmente
-  schedule:
-    - cron: '0 0 * * *' # Opcional: Se ejecuta todos los días a medianoche UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
 
 jobs:
-  sumar-y-publicar:
+  build-and-deploy:
     runs-on: ubuntu-latest
-
-    # Permisos necesarios para que GitHub Actions pueda escribir en el repositorio
-    permissions:
-      contents: write
-
     steps:
-      # 1. Descargar el código del repositorio
       - name: Checkout del repositorio
         uses: actions/checkout@v4
 
-      # 2. Configurar Python en el entorno de ejecución
       - name: Configurar Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
-      # 3. Ejecutar el script de Python que genera y suma los números
       - name: Ejecutar script de Python
         run: python src/script_suma.py
 
-      # 4. Configurar la identidad de Git para el commit automático
-      - name: Configurar Git
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v4
 
-      # 5. Hacer commit y push del archivo actualizado con el resultado
-      - name: Commit y Push de los cambios
+      - name: Subir artefacto para Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Desplegar en GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Mostrar enlace directo
         run: |
-          git status
-          git add resultado.txt
-          # Verifica si hay cambios para evitar errores y añade [skip ci] para no crear bucles
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Actualización automática: suma de números aleatorios [skip ci]" && git push)
+          echo "===================================================="
+          echo " ¡Página web desplegada con éxito!"
+          echo " Haz clic en el siguiente enlace para abrirla:"
+          echo " ${{ steps.deployment.outputs.page_url }}"
+          echo "===================================================="

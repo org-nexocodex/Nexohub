@@ -1,15 +1,13 @@
-# src/script_suma.py
 import random
 
-# Generar dos números automáticos para que GitHub Actions pueda procesarlos sin pantalla
+# Generamos dos números aleatorios para la prueba automática
 num1 = random.randint(1, 100)
 num2 = random.randint(1, 100)
 suma = num1 + num2
 
-# Formatear el resultado
 resultado_texto = f"Número 1: {num1} + Número 2: {num2} = Suma total: {suma}\n"
 
-# Guardar en el archivo
+# Guarda el resultado en un archivo de texto
 with open("resultado.txt", "a") as f:
     f.write(resultado_texto)
 
