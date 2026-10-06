@@ -1,0 +1,44 @@
+name: Suma Automatica con Python
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Ejecutar script de Python
+        run: python src/script_suma.py
+
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v4
+
+      - name: Subir artefacto para Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Desplegar en GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Mostrar enlace directo
+        run: |
+          echo "===================================================="
+          echo " ¡Página web desplegada con éxito!"
+          echo " Haz clic en el siguiente enlace para abrirla:"
+          echo " ${{ steps.deployment.outputs.page_url }}"
+          echo "===================================================="

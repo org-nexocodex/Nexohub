@@ -1,0 +1,3 @@
+N�mero 1: 5.0 + N�mero 2: 6.0 = Suma total: 11.0
+N�mero 1: 78.0 + N�mero 2: 100.0 = Suma total: 178.0
+Número 1: 36 + Número 2: 39 = Suma total: 75
