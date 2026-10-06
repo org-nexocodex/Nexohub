@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora en Django</title>
+</head>
+<body>
+    <div style="margin: 50px auto; width: 300px; font-family: Arial, sans-serif;">
+        <h2>Calculadora con Django 🚀</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <div style="margin-bottom: 10px;">
+                <label>Número 1:</label><br>
+                <input type="number" name="num1" step="any" required style="width: 100%; padding: 5px;">
+            </div>
+            <div style="margin-bottom: 10px;">
+                <label>Número 2:</label><br>
+                <input type="number" name="num2" step="any" required style="width: 100%; padding: 5px;">
+            </div>
+            <button type="submit" style="padding: 10px 15px; background: #007BFF; color: white; border: none; cursor: pointer;">Sumar</button>
+        </form>
+
+        {% if resultado is not None %}
+            <h3 style="margin-top: 20px; color: #333;">El resultado es: {{ resultado }}</h3>
+        {% endif %}
+    </div>
+</body>
+</html>

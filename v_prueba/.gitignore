@@ -1,0 +1,8 @@
+# Created by venv; see https://docs.python.org/3/library/venv.html
+# Base de datos de desarrollo
+db.sqlite3
+
+# Archivos de caché de Python
+__pycache__/
+*.py[cod]
+*$py.class
